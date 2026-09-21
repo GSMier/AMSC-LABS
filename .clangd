@@ -1,0 +1,13 @@
+CompileFlags:
+  Compiler: /u/sw/toolchains/gcc-glibc/11.2.0/prefix/bin/g++
+  Add:
+    - -I
+    - /u/sw/toolchains/gcc-glibc/11.2.0/pkgs/eigen/3.3.9/include/eigen3
+    - -I
+    - /usr/include
+    - -I
+    - /usr/include/hdf5/serial/
+    - -I
+    - /usr/include/suitesparse/
+    - -I
+    - /usr/include/x86_64-linux-gnu/openblas-pthread

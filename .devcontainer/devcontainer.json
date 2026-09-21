@@ -1,0 +1,31 @@
+{
+  "name": "amsc",
+  "image": "quay.io/pjbaioni/amsc_mk:2025",
+  "runArgs": [
+    "--platform=linux/amd64",
+    "--name=amsc"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/giansebastianmierbello/Documents/POLIMI/AMSC/AMSC-LABS,type=bind",
+  "workspaceFolder": "/home/giansebastianmierbello/Documents/POLIMI/AMSC/AMSC-LABS",
+  "remoteUser": "ubuntu",
+  "postCreateCommand": "grep -qxF 'source /u/sw/etc/bash.bashrc' ~/.bashrc || printf '%s\\n' 'source /u/sw/etc/bash.bashrc' 'module load gcc-glibc eigen' >> ~/.bashrc; .devcontainer/configure-clangd.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "llvm-vs-code-extensions.vscode-clangd",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools",
+        "matepek.vscode-catch2-test-adapter",
+        "usernamehw.errorlens",
+        "eamodio.gitlens",
+        "cschlosser.doxdocgen"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "clangd.arguments": [
+          "--query-driver=/usr/bin/g++,/usr/bin/gcc,/u/sw/toolchains/gcc-glibc/11.2.0/prefix/bin/g++,/u/sw/toolchains/gcc-glibc/11.2.0/prefix/bin/gcc"
+        ]
+      }
+    }
+  }
+}
