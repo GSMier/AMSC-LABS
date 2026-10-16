@@ -2,6 +2,7 @@
 #define DATASETS_HPP
 
 #include <istream>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -15,7 +16,7 @@ struct Dataset {
 // Returns a pointer to a new Dataset, or nullptr if the line has no values or a
 // value is not a number.
 // TODO: who owns the returned Dataset? Make it explicit in the return type
-Dataset *read_dataset(std::istream &in);
+std::unique_ptr<Dataset> read_dataset(std::istream &in);
 
 double mean(Dataset const &d);
 

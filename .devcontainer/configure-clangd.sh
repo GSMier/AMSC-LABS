@@ -2,8 +2,11 @@
 set -euo pipefail
 
 source /u/sw/etc/bash.bashrc
-read -r -a modules <<< "${CLANGD_MODULES:-gcc-glibc eigen}"
-module load "${modules[@]}"
+
+if command -v module >/dev/null 2>&1; then
+  read -r -a modules <<< "${CLANGD_MODULES:-gcc-glibc eigen}"
+  module load "${modules[@]}"
+fi
 
 compiler=$(command -v g++)
 if [[ -z "$compiler" ]]; then
